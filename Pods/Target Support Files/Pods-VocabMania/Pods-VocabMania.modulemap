@@ -1,0 +1,6 @@
+framework module Pods_VocabMania {
+  umbrella header "Pods-VocabMania-umbrella.h"
+
+  export *
+  module * { export * }
+}
