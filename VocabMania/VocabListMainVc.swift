@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import FirebaseDatabase
 
 class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -22,6 +23,11 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var ref: DatabaseReference!
     var handle: DatabaseHandle!
     var WORDS = [String]()
+    var DEFINITIONS = [String]()
+    var EXAMPLES = [String]()
+    var example: String?
+    var wordChosenTableView:Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +39,7 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         myDatabaseObserver()
         
-        
+        print(WORDS)
         
         
         
@@ -62,7 +68,9 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        wordChosenTableView = indexPath.row
         
+        performSegue(withIdentifier: "WordExplanation", sender: self)
     }
     
     
@@ -73,29 +81,52 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     
+    
     //SEGUE:
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "addVocab" {
-            _ = segue.destination as? AddVocab
+            let addVocabulary = segue.destination as? AddVocab
+            addVocabulary?.indexNum = wordChosenTableView
         }
+        
         if segue.identifier == "WordExplanation" {
-            var wordPage = segue.destination as? WordExplanationVC
-//            wordPage?.word = 
+            let wordPage = segue.destination as? WordExplanationVC
+            
+            wordPage?.word = WORDS[wordChosenTableView!]
+            wordPage?.definition = DEFINITIONS[wordChosenTableView!]
+            
+            
         }
+        
     }
+    
     
     //DATABASE OBSERVER:
     func myDatabaseObserver() {
         
         ref = Database.database().reference()
         handle = ref.child("AllWords:").observe(.childAdded, with: { (snapshot) in
-            if let item = snapshot.value as? String {
+            if let item = snapshot.key as? String {
                 self.WORDS.append(item)
                 self.tableView.reloadData()
             }
         })
+        
+        handle = ref.child("AllWords:").observe(.childAdded, with: { (snapshot) in
+            if let itemm = snapshot.value as? String {
+                self.DEFINITIONS.append(itemm)
+                self.tableView.reloadData()
+            }
+        })
+        
+        
+        
+        
 
     }
+    
+    
     
     
     

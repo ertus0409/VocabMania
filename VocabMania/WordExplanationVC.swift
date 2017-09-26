@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class WordExplanationVC: UIViewController {
     
@@ -19,11 +20,41 @@ class WordExplanationVC: UIViewController {
     var word: String?
     var definition: String?
     var exampleSentence: String?
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        
+        wordLbl.text = word
+        definitionLbl.text = definition?.capitalized
+        ref?.child("AllWords:").child(word!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.exampleSentenceLbl.text = item.capitalized
+                print(item)
+            }
+        })
+        
+        
+        
 
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    @IBAction func DeleteBtnTapped(_ sender: Any) {
+        
+        ref.child("AllWords:").child(wordLbl.text!).removeValue()
+        ref.child("WordExamples:").child(wordLbl.text!).removeValue()
+        performSegue(withIdentifier: "Deleted", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Deleted" {
+            _ = segue.destination as! VocabListMainVC
+//
+        }
     }
     
     
