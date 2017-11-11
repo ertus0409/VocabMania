@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		21AA0D56C7017D0B150D3D33 /* Pods_VocabMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C41218F7BE96A04762C26B9C /* Pods_VocabMania.framework */; };
 		A3119CB01F70FAA600667AF1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3119CAF1F70FAA600667AF1 /* FancyView.swift */; };
+		A380DC5B1F7A63940081BC44 /* QuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A380DC5A1F7A63940081BC44 /* QuizVC.swift */; };
+		A395A0E91FB078A500C108C8 /* Vocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395A0E81FB078A500C108C8 /* Vocab.swift */; };
 		A3989BA21F6EEFEB0031971D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3989BA11F6EEFEB0031971D /* AppDelegate.swift */; };
 		A3989BA41F6EEFEB0031971D /* VocabListMainVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3989BA31F6EEFEB0031971D /* VocabListMainVc.swift */; };
 		A3989BA71F6EEFEB0031971D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3989BA51F6EEFEB0031971D /* Main.storyboard */; };
@@ -20,12 +22,16 @@
 		A3A28CE01F6FF0CD00F71F7D /* Germanica.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3A28CDF1F6FF0CD00F71F7D /* Germanica.otf */; };
 		A3A28CE21F70432500F71F7D /* AddVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28CE11F70432500F71F7D /* AddVocab.swift */; };
 		A3A28CE41F70664500F71F7D /* WordExplanationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28CE31F70664500F71F7D /* WordExplanationVC.swift */; };
+		A3E0A8BE1F894C6200FA8A17 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E0A8BD1F894C6200FA8A17 /* DataService.swift */; };
+		A3FA1F701F822B83003F95FD /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA1F6F1F822B83003F95FD /* FancyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38F26E4F47FBCFE62EB9BEAA /* Pods-VocabMania.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabMania.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabMania/Pods-VocabMania.debug.xcconfig"; sourceTree = "<group>"; };
 		75E6F4E199B0350194DA8BC5 /* Pods-VocabMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabMania.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabMania/Pods-VocabMania.release.xcconfig"; sourceTree = "<group>"; };
 		A3119CAF1F70FAA600667AF1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		A380DC5A1F7A63940081BC44 /* QuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizVC.swift; sourceTree = "<group>"; };
+		A395A0E81FB078A500C108C8 /* Vocab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vocab.swift; sourceTree = "<group>"; };
 		A3989B9E1F6EEFEB0031971D /* VocabMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3989BA11F6EEFEB0031971D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3989BA31F6EEFEB0031971D /* VocabListMainVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListMainVc.swift; sourceTree = "<group>"; };
@@ -39,6 +45,8 @@
 		A3A28CDF1F6FF0CD00F71F7D /* Germanica.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Germanica.otf; sourceTree = "<group>"; };
 		A3A28CE11F70432500F71F7D /* AddVocab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVocab.swift; sourceTree = "<group>"; };
 		A3A28CE31F70664500F71F7D /* WordExplanationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordExplanationVC.swift; sourceTree = "<group>"; };
+		A3E0A8BD1F894C6200FA8A17 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A3FA1F6F1F822B83003F95FD /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		C41218F7BE96A04762C26B9C /* Pods_VocabMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,6 +84,7 @@
 		A3989BA01F6EEFEB0031971D /* VocabMania */ = {
 			isa = PBXGroup;
 			children = (
+				A3E0A8BA1F894C1A00FA8A17 /* Services */,
 				A3A28CD81F6FD53D00F71F7D /* Util */,
 				A3A28CD51F6FBCE800F71F7D /* Controller */,
 				A3A28CD41F6FBCE400F71F7D /* View */,
@@ -93,6 +102,7 @@
 		A3A28CD31F6FBCD900F71F7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A395A0E81FB078A500C108C8 /* Vocab.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 			children = (
 				A3A28CDD1F6FE5C600F71F7D /* VocabCell.swift */,
 				A3119CAF1F70FAA600667AF1 /* FancyView.swift */,
+				A3FA1F6F1F822B83003F95FD /* FancyButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 				A3989BA31F6EEFEB0031971D /* VocabListMainVc.swift */,
 				A3A28CE11F70432500F71F7D /* AddVocab.swift */,
 				A3A28CE31F70664500F71F7D /* WordExplanationVC.swift */,
+				A380DC5A1F7A63940081BC44 /* QuizVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -122,6 +134,14 @@
 				A3A28CD91F6FD54A00F71F7D /* CONSTANTS.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		A3E0A8BA1F894C1A00FA8A17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A3E0A8BD1F894C6200FA8A17 /* DataService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		ED424A33F435FC8EE580E087 /* Frameworks */ = {
@@ -278,12 +298,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3989BA41F6EEFEB0031971D /* VocabListMainVc.swift in Sources */,
+				A395A0E91FB078A500C108C8 /* Vocab.swift in Sources */,
+				A380DC5B1F7A63940081BC44 /* QuizVC.swift in Sources */,
 				A3A28CDE1F6FE5C600F71F7D /* VocabCell.swift in Sources */,
+				A3FA1F701F822B83003F95FD /* FancyButton.swift in Sources */,
 				A3A28CE21F70432500F71F7D /* AddVocab.swift in Sources */,
 				A3989BA21F6EEFEB0031971D /* AppDelegate.swift in Sources */,
 				A3A28CE41F70664500F71F7D /* WordExplanationVC.swift in Sources */,
 				A3119CB01F70FAA600667AF1 /* FancyView.swift in Sources */,
 				A3A28CDA1F6FD54A00F71F7D /* CONSTANTS.swift in Sources */,
+				A3E0A8BE1F894C6200FA8A17 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

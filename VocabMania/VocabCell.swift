@@ -12,6 +12,8 @@ class VocabCell: UITableViewCell {
 
     @IBOutlet weak var cellLbl: UILabel!
     
+    var vocab: Vocab!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,9 +21,9 @@ class VocabCell: UITableViewCell {
     
     
     
-    func updateUI(myWord: String){
+    func updateUI(vocab: Vocab){
         
-        cellLbl.text = myWord
+        cellLbl.text = vocab.vocabName
         
     }
 

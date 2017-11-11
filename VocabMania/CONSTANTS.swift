@@ -8,6 +8,8 @@
 
 import Foundation
 
+var WORDS = [String]()
+var DEFINITIONS = [String]()
 
 
 

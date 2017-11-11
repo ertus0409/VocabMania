@@ -20,7 +20,6 @@ class AddVocab: UIViewController, UITextFieldDelegate {
     //VARIABLES:
     var ref: DatabaseReference!
     var indexNum: Int?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,6 @@ class AddVocab: UIViewController, UITextFieldDelegate {
         
         ref = Database.database().reference()
 
-        
     }
     
     //TEXT FIELD HIDE
@@ -46,8 +44,10 @@ class AddVocab: UIViewController, UITextFieldDelegate {
     @IBAction func AddVocabBtnTapped(_ sender: Any) {
 
         if wordField.text != "" || wordField.text != nil || definitionField.text != "" || definitionField.text != nil || exampleSentenceField.text != "" || exampleSentenceField.text != nil{
-            ref.child("AllWords:").child(wordField.text!.capitalized).setValue(definitionField.text!)
-            ref.child("WordExamples:").child(wordField.text!).setValue(exampleSentenceField.text?.capitalized)
+//            ref.child("AllWords:").child(wordField.text!.capitalized).setValue(definitionField.text!)
+            DataService.ds.REF_WORDS.child(wordField.text!.capitalized).setValue(definitionField.text!)
+//     ref.child("WordExamples:").child(wordField.text!.capitalized).setValue(exampleSentenceField.text?.capitalized)
+            DataService.ds.REF_EXAMPLES.child(wordField.text!.capitalized).setValue(exampleSentenceField.text?.capitalized)
         }
         
         performSegue(withIdentifier: "BackToMain", sender: self)

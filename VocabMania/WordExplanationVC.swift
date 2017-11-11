@@ -17,33 +17,28 @@ class WordExplanationVC: UIViewController {
     @IBOutlet weak var exampleSentenceLbl: UILabel!
     
     //VARIABLES:
-    var word: String?
-    var definition: String?
-    var exampleSentence: String?
+    var theVocab: Vocab!
+    
+//    var word: String?
+//    var definition: String?
+//    var exampleSentence: String?
     var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
         
-        wordLbl.text = word
-        definitionLbl.text = definition?.capitalized
-        ref?.child("AllWords:").child(word!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.exampleSentenceLbl.text = item.capitalized
-                print(item)
-            }
-        })
-        
-        
-        
-
+        wordLbl.text = theVocab.vocabName.uppercased()
+        definitionLbl.text = theVocab.vocabDefinition.uppercased()
+        if let example = theVocab.vocabExample as? String {
+            exampleSentenceLbl.text = example.uppercased()
+        }
         
     }
     
     
     @IBAction func DeleteBtnTapped(_ sender: Any) {
+        
+        // DON'T FORGET TO COMPLETE AFTER OOP IMPLEMENTATION
         
         ref.child("AllWords:").child(wordLbl.text!).removeValue()
         ref.child("WordExamples:").child(wordLbl.text!).removeValue()
