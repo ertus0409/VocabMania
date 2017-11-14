@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import FirebaseDatabase
 
-class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     
     //IBOUTLETS:
     @IBOutlet weak var wordList: UICollectionView!
@@ -24,9 +24,9 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var vocabs = [Vocab]()
     var ref: DatabaseReference!
     var handle: DatabaseHandle!
-    
-    
+
     var wordChosenTableView:Int?
+    
     var isSearching = false
     var filteredData = [Vocab!]()
     
@@ -36,6 +36,8 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         myDatabaseObserver()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
         
         
     }
@@ -47,7 +49,13 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath) as? VocabCell {
             
-            let vocab = vocabs[indexPath.row]
+            var vocab = vocabs[indexPath.row]
+            
+            if isSearching {
+                vocab = filteredData[indexPath.row]
+            } else {
+                vocab = vocabs[indexPath.row]
+            }
             
             cell.updateUI(vocab: vocab)
             
@@ -59,6 +67,11 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isSearching {
+            return filteredData.count
+        }
+        
         return vocabs.count
     }
     
@@ -149,7 +162,19 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else {
             return num1
         }
-        
+    }
+    
+    //SEARCHBAR:
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
+        } else {
+            isSearching = true
+            filteredData = vocabs.filter({$0.vocabName.range(of: searchBar.text!) != nil})
+            tableView.reloadData()
+        }
     }
    
     
