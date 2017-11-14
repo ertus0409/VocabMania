@@ -126,7 +126,11 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if segue.identifier == "WordExplanation" {
             let wordPage = segue.destination as? WordExplanationVC
+            if isSearching {
+                wordPage?.theVocab = filteredData[wordChosenTableView!]
+            } else {
             wordPage?.theVocab = vocabs[wordChosenTableView!]
+            }
         }
         
         if segue.identifier == "StartQuiz" {
