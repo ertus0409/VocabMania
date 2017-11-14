@@ -23,6 +23,7 @@
 		A3A28CE21F70432500F71F7D /* AddVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28CE11F70432500F71F7D /* AddVocab.swift */; };
 		A3A28CE41F70664500F71F7D /* WordExplanationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28CE31F70664500F71F7D /* WordExplanationVC.swift */; };
 		A3E0A8BE1F894C6200FA8A17 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E0A8BD1F894C6200FA8A17 /* DataService.swift */; };
+		A3F64C8A1FBB6325008D24B4 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F64C891FBB6325008D24B4 /* FancyField.swift */; };
 		A3FA1F701F822B83003F95FD /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA1F6F1F822B83003F95FD /* FancyButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		A3A28CE11F70432500F71F7D /* AddVocab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVocab.swift; sourceTree = "<group>"; };
 		A3A28CE31F70664500F71F7D /* WordExplanationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordExplanationVC.swift; sourceTree = "<group>"; };
 		A3E0A8BD1F894C6200FA8A17 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A3F64C891FBB6325008D24B4 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		A3FA1F6F1F822B83003F95FD /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		C41218F7BE96A04762C26B9C /* Pods_VocabMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				A3A28CDD1F6FE5C600F71F7D /* VocabCell.swift */,
 				A3119CAF1F70FAA600667AF1 /* FancyView.swift */,
 				A3FA1F6F1F822B83003F95FD /* FancyButton.swift */,
+				A3F64C891FBB6325008D24B4 /* FancyField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F64C8A1FBB6325008D24B4 /* FancyField.swift in Sources */,
 				A3989BA41F6EEFEB0031971D /* VocabListMainVc.swift in Sources */,
 				A395A0E91FB078A500C108C8 /* Vocab.swift in Sources */,
 				A380DC5B1F7A63940081BC44 /* QuizVC.swift in Sources */,

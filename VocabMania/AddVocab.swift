@@ -18,7 +18,6 @@ class AddVocab: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var exampleSentenceField: UITextField!
     
     //VARIABLES:
-    var ref: DatabaseReference!
     var indexNum: Int?
     
     override func viewDidLoad() {
@@ -28,8 +27,6 @@ class AddVocab: UIViewController, UITextFieldDelegate {
         self.definitionField.delegate = self
         self.exampleSentenceField.delegate = self
         
-        ref = Database.database().reference()
-
     }
     
     //TEXT FIELD HIDE
@@ -42,13 +39,14 @@ class AddVocab: UIViewController, UITextFieldDelegate {
     
     //ADD VOCAB TAPPED:
     @IBAction func AddVocabBtnTapped(_ sender: Any) {
-
-        if wordField.text != "" || wordField.text != nil || definitionField.text != "" || definitionField.text != nil || exampleSentenceField.text != "" || exampleSentenceField.text != nil{
-//            ref.child("AllWords:").child(wordField.text!.capitalized).setValue(definitionField.text!)
-            DataService.ds.REF_WORDS.child(wordField.text!.capitalized).setValue(definitionField.text!)
-//     ref.child("WordExamples:").child(wordField.text!.capitalized).setValue(exampleSentenceField.text?.capitalized)
-            DataService.ds.REF_EXAMPLES.child(wordField.text!.capitalized).setValue(exampleSentenceField.text?.capitalized)
-        }
+        
+        let vocab: Dictionary<String, AnyObject> = [
+            "name": wordField.text as AnyObject,
+            "definition": definitionField.text as AnyObject,
+            "example": exampleSentenceField.text as AnyObject
+        ]
+        
+        let _ = DataService.ds.REF_WORDS.childByAutoId().setValue(vocab)
         
         performSegue(withIdentifier: "BackToMain", sender: self)
         

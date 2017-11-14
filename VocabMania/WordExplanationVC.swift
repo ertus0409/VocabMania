@@ -18,11 +18,8 @@ class WordExplanationVC: UIViewController {
     
     //VARIABLES:
     var theVocab: Vocab!
-    
-//    var word: String?
-//    var definition: String?
-//    var exampleSentence: String?
     var ref: DatabaseReference!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +34,7 @@ class WordExplanationVC: UIViewController {
     
     
     @IBAction func DeleteBtnTapped(_ sender: Any) {
-        
-        // DON'T FORGET TO COMPLETE AFTER OOP IMPLEMENTATION
-        
-        ref.child("AllWords:").child(wordLbl.text!).removeValue()
-        ref.child("WordExamples:").child(wordLbl.text!).removeValue()
+        DataService.ds.REF_WORDS.child(theVocab.vocabKey).removeValue()
         performSegue(withIdentifier: "Deleted", sender: self)
     }
     

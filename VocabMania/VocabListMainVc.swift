@@ -16,6 +16,7 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var wordList: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addVocabBtn: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     
@@ -25,10 +26,9 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var handle: DatabaseHandle!
     
     
-    var EXAMPLES = [String]()
-    var example: String?
     var wordChosenTableView:Int?
-    
+    var isSearching = false
+    var filteredData = [Vocab!]()
     
 
     override func viewDidLoad() {
@@ -79,12 +79,9 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func myDatabaseObserver() {
         
         DataService.ds.REF_WORDS.observe(.value, with: { (snapshot) in
-            print("check")
             self.vocabs = []
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                print("check")
                 for snap in snapshot {
-                    print("check")
                     print("SNAP: \(snap)")
                     if let vocabDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
@@ -101,18 +98,8 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     //STARTQUIZ:
-     var someInt: Int?
     @IBAction func startQuizTapped(_ sender: Any) {
-        
-        let randomNum:UInt32 = arc4random_uniform(UInt32(WORDS.count))
-        someInt = Int(randomNum)
-        print("ARTH: \(someInt)")
-        
-        
-        performSegue(withIdentifier: "StartQuiz", sender: self)
-        
-        
-        
+        self.performSegue(withIdentifier: "StartQuiz", sender: self)
     }
     
     
@@ -127,20 +114,43 @@ class VocabListMainVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if segue.identifier == "WordExplanation" {
             let wordPage = segue.destination as? WordExplanationVC
             wordPage?.theVocab = vocabs[wordChosenTableView!]
-            
-//            wordPage?.word = WORDS[wordChosenTableView!]
-//            wordPage?.definition = DEFINITIONS[wordChosenTableView!]
-            
-            
         }
         
         if segue.identifier == "StartQuiz" {
             let quizPage = segue.destination as? QuizVC
-            quizPage?.myInt = self.someInt
+            
+            let randomNum: UInt32 = arc4random_uniform(UInt32(vocabs.count))
+            let someInt = Int(randomNum)
+            quizPage?.post = vocabs[someInt]
+            
+            let randomNumOne:UInt32 = arc4random_uniform(UInt32(vocabs.count))
+            let someIntOne = Int(randomNumOne)
+            quizPage?.postOne = vocabs[numberCheck(num1: someIntOne, num2: someInt)]
+            
+            let randomNumTwo:UInt32 = arc4random_uniform(UInt32(vocabs.count))
+            let someIntTwo = Int(randomNumTwo)
+            quizPage?.postTwo = vocabs[numberCheck(num1: someIntTwo, num2: someIntOne)]
+
+            let randomNumThree:UInt32 = arc4random_uniform(UInt32(vocabs.count))
+            let someIntThree = Int(randomNumThree)
+            quizPage?.postThree = vocabs[numberCheck(num1: someIntThree, num2: someIntTwo)]
+            
         }
         
     }
     
+    //Checks wether the random generator created same number twice.
+    func numberCheck(num1: Int, num2: Int) -> Int {
+        if num1 == num2 {
+            var random: UInt32 = arc4random_uniform(UInt32(vocabs.count))
+            var num = Int(random)
+            numberCheck(num1: num, num2: num2)
+            return num
+        } else {
+            return num1
+        }
+        
+    }
    
     
     
