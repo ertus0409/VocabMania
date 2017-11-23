@@ -33,6 +33,11 @@ class WordExplanationVC: UIViewController {
     }
     
     
+    @IBAction func updateBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "update", sender: self)
+    }
+    
+    
     @IBAction func DeleteBtnTapped(_ sender: Any) {
         DataService.ds.REF_WORDS.child(theVocab.vocabKey).removeValue()
         performSegue(withIdentifier: "Deleted", sender: self)
@@ -42,6 +47,11 @@ class WordExplanationVC: UIViewController {
         if segue.identifier == "Deleted" {
             _ = segue.destination as! VocabListMainVC
 //
+        }
+        
+        if segue.identifier == "update" {
+            let update = segue.destination as! AddVocab
+            update.updateVocab = theVocab
         }
     }
     

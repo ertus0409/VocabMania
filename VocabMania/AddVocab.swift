@@ -19,6 +19,8 @@ class AddVocab: UIViewController, UITextFieldDelegate {
     
     //VARIABLES:
     var indexNum: Int?
+    var updateVocab: Vocab?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,12 @@ class AddVocab: UIViewController, UITextFieldDelegate {
         self.wordField.delegate = self
         self.definitionField.delegate = self
         self.exampleSentenceField.delegate = self
+        
+        if updateVocab != nil {
+            wordField.text = updateVocab?.vocabName
+            definitionField.text = updateVocab?.vocabDefinition
+            exampleSentenceField.text = updateVocab?.vocabExample
+        }
         
     }
     
@@ -46,7 +54,11 @@ class AddVocab: UIViewController, UITextFieldDelegate {
             "example": exampleSentenceField.text as AnyObject
         ]
         
-        let _ = DataService.ds.REF_WORDS.childByAutoId().setValue(vocab)
+        if updateVocab != nil {
+            let _ = DataService.ds.REF_WORDS.child((updateVocab?.vocabKey)!).setValue(vocab)
+        } else {
+            let _ = DataService.ds.REF_WORDS.childByAutoId().setValue(vocab)
+        }
         
         performSegue(withIdentifier: "BackToMain", sender: self)
         
